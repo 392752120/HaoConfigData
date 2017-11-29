@@ -1,1 +1,31 @@
 hello:hello
+
+spring:
+# gitlab地址
+  cloud:
+    config:
+      server:
+        git:
+           uri: http://120.27.81.45/hms-config/test-file-config.git
+           username: zengqinggui
+           password: Quyiyuan*2017
+           searchPaths: ms*
+#spring:
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          uri: file://qy/git/dev-file-config
+#          searchPaths: ms*,isis*,backend*
+eureka:
+  client:
+    serviceUrl:
+#      defaultZone: http://user:password@10.29.164.106:8761/eureka/
+      defaultZone: http://user:password@localhost:8761/eureka/
+  instance:
+    preferIpAddress: true
+    statusPageUrlPath: ${management.contextPath}/info
+    healthCheckUrlPath: ${management.contextPath}/health
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
